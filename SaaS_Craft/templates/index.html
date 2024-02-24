@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS_Craft</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="container-body">
+            <!--  heading -->
+            <div class="nav-content">
+                <div class="nav-bar">
+                    <ul>
+                        <a href="{% url 'index'%}"><li>Accuille</li></a>
+                        <a href="#"><li>Nos Projet</li></a>
+                        <a href="#"><li>Contact</li></a>
+                    </ul>
+                    
+                </div>
+                <div class="nav-text">
+                    <h3>Rout vert le succes de la creation de tes projet </h3>
+                </div>
+            </div>
+            <!-- all_center  -->
+            <div class="article-container">
+                <img src="{% static '/image/back.png' %}" alt="" id="backBtn">
+                <div class="all_article">
+                    {% for article in articles %}
+                    <!--Vrai ===========================================Vrai-->
+                    <div class="article">
+                        <div>
+                            <div class="article-body">
+                            <div class="profile">
+                                <div class="profile-image">
+                                    <div class="image">
+                                        <img src="{% static '/image/blank-profile-picture.png' %}" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <h2>name</h2>
+                                        <h4>{{article.title}}</h4>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="date-creation">
+                                    <h2>{{article.date_to_create|date:"m"}}</h2>
+                                    <h4>{{article.date_to_create|date:"d/m/y/"}}</h4>
+                                </div>
+                            </div>
+                        
+                            <div class="article-image">
+                                <img src="{{article.post_image.url}}" alt="">
+                            </div>
+                            <div class="text">
+                                    {{article.post|slice:":100"}}
+                                
+                            </div>
+                            <div class="new-page">
+                                <a href="{% url 'article_post' pk=article.id %}"><h2>plus....</h2></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!--===============Fin ==================================-->
+                    {% endfor %}
+                <!--===============Fin ==================================-->
+            </div>
+            <img src="{% static '/image/next.png' %}" alt="" id="nextBtn">
+        </div>
+    </div>
+
+    <script src="{% static '/js/scripts.js' %}"></script>
+</body>
+</html>

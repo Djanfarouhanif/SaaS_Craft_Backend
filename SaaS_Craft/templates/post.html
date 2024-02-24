@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS_Craft</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/post.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="container-body">
+            <!--  heading -->
+            <div class="nav-content">
+                <div class="nav-bar">
+                    <ul>
+                        <a href="{% url 'index' %}"><li>Accuille</li></a>
+                        <a href="#"><li>Nos Projet</li></a>
+                        <a href="#"><li>Contact</li></a>
+                    </ul>
+                        
+                    
+                </div>
+                <div class="nav-text">
+                    <h3>Rout vert le succes de la creation de tes projet </h3>
+                </div>
+            </div>
+            <!-- all_center  -->
+            <div class="article-container">
+               
+                    
+                    <!--Vrai ===========================================Vrai-->
+                    <div class="article">
+                        <div class="article-body">
+                        <div class="profile">
+                            <div class="profile-image">
+                                <div class="image">
+                                    <img src="/static/image/blank-profile-picture.png" alt="">
+                                </div>
+                                <div class="description">
+                                    <h2>name</h2>
+                                    <h4>{{article.title}}</h4>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="date-creation">
+                                <h2>{{article.date_to_create|date:"d"}}</h2>
+                                <h4>{{article.date_to_create|date:"y/m/d"}}</h4>
+                            </div>
+                        </div>
+                    
+                        <div class="article-image">
+                            <img src="{{article.post_image.url}}" alt="">
+                        </div>
+                        <div class="text">
+                               {{article.post}}
+                            
+                        </div>
+                        <div class="new-page-post">
+                            <a href="{% url 'index' %}"><h2>plus d'article</h2></a>
+                        </div>
+                    </div>
+                </div>
+                <!--===============Fin ==================================-->
+            
+        </div>
+        <div class="comment-container">
+            <div class="comment">
+                <h2>Commentaire</h2>
+            </div>
+            <form action="{% url 'articleComment' pk=article.id %}" method="post">
+                {% csrf_token %}
+                <div class="input">
+                    <input type="text" name="comment" placeholder="Ecrire un Commentaire.......">
+                </div>
+              
+                <div class="button">
+                    <button>Envoyer</button>
+                </div>
+            </form>
+            <div class="all-comment">
+                {% for comment in comments reversed %}
+                <!--=======Debut===============-->
+                <div class="comment-text">
+                    <div id="text">
+                    <h3>{{comment.date_to_create|date:"y/m/d"}}</h3>
+                    <div class="text">
+                       {{comment.text}}
+                    </div>
+                </div>
+                </div>
+                <!--====Fin=======-->
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

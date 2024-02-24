@@ -5,21 +5,21 @@ from datetime import datetime
 
 
 class Article(models.Model):
-    id = models.CharField(max_length=500, default=uuid.uuid4)
+    id = models.CharField(max_length=500, default=uuid.uuid4, primary_key=True)
     title = models.CharField(max_length=100)
     post = models.TextField()
     post_image = models.ImageField(upload_to="post_image")
-    date_to_cteate = models.DateTimeField(default=datetime.now)
+    date_to_create = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return self.title
 
 class Comment(models.Model):
-    article = models.ForeingKey(Article, on_delete=models.CASCADE)
-    text = models.textField()
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    text = models.TextField()
     date_to_create = models.DateTimeField(default=datetime.now)
     
     def __str__(self):
-        return self.date_to_create
+        return self.article.title
 
 

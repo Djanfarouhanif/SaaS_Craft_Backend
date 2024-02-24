@@ -1,0 +1,41 @@
+.settings-container{
+   
+    display: flex;
+    justify-content: center;
+}
+
+.all-settings{
+    background: white;
+    width: 500px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+input, textarea, button{
+    
+   outline: none;
+   border: none;
+
+}
+
+input{
+    border-bottom: 2px solid  #070F2B;
+    font-size: 15px;
+}
+
+textarea{
+    border: solid #070F2B;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+button{
+    background: rgba(1, 14, 35, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.all-settings form div{
+    margin: 20px;
+}
