@@ -5,9 +5,16 @@ from .models import Article, Comment
 
 def index(request):
     article = Article.objects.all()
+    users =  request.user.username
 
+    user_current = False
+    if users:
+        user_current = True
+   
     context = {
-        "articles":article
+        "articles":article,
+        "user_current":user_current
+        
     }
     return render(request, 'index.html', context)
 
@@ -20,6 +27,7 @@ def settings(request):
 
         title = request.POST["title"]
         post = request.POST["post"]
+
 
         artilce = Article.objects.create(title=title, post=post, post_image=image)
         artilce.save()

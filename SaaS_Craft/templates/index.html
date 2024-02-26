@@ -15,7 +15,12 @@
                 <div class="nav-bar">
                     <ul>
                         <a href="{% url 'index'%}"><li>Accuille</li></a>
+                        {% if user_current  %}
+                        
+                        <a href="{% url 'settings' %}"><li>Nos Projet</li></a>
+                        {% else %}
                         <a href="#"><li>Nos Projet</li></a>
+                        {% endif %}
                         <a href="#"><li>Contact</li></a>
                     </ul>
                     
