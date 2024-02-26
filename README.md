@@ -1,10 +1,9 @@
 "# SaaS_Craft_Backend" 
-Voici un exemple de README pour un projet Django :
+
 
 ```
-# Nom du Projet
 
-Description brève du projet et de son objectif.
+Une application web  blog
 
 ## Installation
 
@@ -12,12 +11,12 @@ Assurez-vous d'avoir Python et Django installés sur votre système.
 
 1. Clonez ce dépôt sur votre machine :
    ```
-   git clone <URL du dépôt>
+   git clone <[URL du dépôt](https://github.com/Djanfarouhanif/SaaS_Craft_Backend.git)>
    ```
 
 2. Accédez au répertoire du projet :
    ```
-   cd nom-du-repertoire
+   cd SaaS_Craft_Backend
    ```
 
 3. Installez les dépendances nécessaires :
