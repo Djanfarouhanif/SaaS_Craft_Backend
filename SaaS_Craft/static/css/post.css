@@ -4,19 +4,32 @@
     width: 70%;
     
     padding: 20px;
+    
 
+}
+
+.profile{
+    width: 100%;
 }
 
 .article-image{
-    max-width: 500px;
+    max-width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+   
     
 }
-
+.article-body{
+    display: flex;
+    flex-wrap: wrap;
+}
 .new-page-post{
     position: relative;
     margin-top: 20px;
+    width: 100%;
     
 }
+
 
 .new-page-post a{
     text-decoration: none;
@@ -95,4 +108,22 @@ button{
 
 .comment-text .text{
     margin: 10px;
+    
+}
+
+
+@media screen and (width: 450px){
+    
+    
+    .article-image{
+        max-width: 50%;
+        
+    }
+    .nav-content .nav-text{
+        text-align: center;
+        color: white;
+        font-size:20px;
+        margin-top: 100px;
+     }
+
 }

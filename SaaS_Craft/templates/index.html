@@ -31,7 +31,6 @@
             </div>
             <!-- all_center  -->
             <div class="article-container">
-                <img src="{% static '/image/back.png' %}" alt="" id="backBtn">
                 <div class="all_article">
                     {% for article in articles %}
                     <!--Vrai ===========================================Vrai-->
@@ -41,18 +40,18 @@
                             <div class="profile">
                                 <div class="profile-image">
                                     <div class="image">
-                                        <img src="{% static '/image/blank-profile-picture.png' %}" alt="">
+                                       
                                     </div>
                                     <div class="description">
-                                        <h2>name</h2>
-                                        <h4>{{article.title}}</h4>
+                                        <h6>name</h6>
+                                        <h6>{{article.title}}</h6>
                                     </div>
                                 </div>
                                 
                                 
                                 <div class="date-creation">
-                                    <h2>{{article.date_to_create|date:"m"}}</h2>
-                                    <h4>{{article.date_to_create|date:"d/m/y/"}}</h4>
+                                    <h6>{{article.date_to_create|date:"d"}}</h6>
+                                    <h6>{{article.date_to_create|date:"y/m/d"}}</h6>
                                 </div>
                             </div>
                         
@@ -60,11 +59,11 @@
                                 <img src="{{article.post_image.url}}" alt="">
                             </div>
                             <div class="text">
-                                    {{article.post|slice:":100"}}
+                                    {{article.post|slice:":200"}}
                                 
                             </div>
                             <div class="new-page">
-                                <a href="{% url 'article_post' pk=article.id %}"><h2>plus....</h2></a>
+                                <a href="{% url 'article_post' pk=article.id %}"><h4>plus....</h4></a>
                             </div>
                         </div>
                     </div>
@@ -73,7 +72,7 @@
                     {% endfor %}
                 <!--===============Fin ==================================-->
             </div>
-            <img src="{% static '/image/next.png' %}" alt="" id="nextBtn">
+            
         </div>
     </div>
 
