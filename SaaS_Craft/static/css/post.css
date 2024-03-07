@@ -1,9 +1,9 @@
 .article{
-    border: 1px solid white;
+    border: 1px solid #fff;
     color: white;
-    width: 70%;
-    
+    width: 600px;
     padding: 20px;
+    margin: 20px
     
 
 }
@@ -13,7 +13,7 @@
 }
 
 .article-image{
-    max-width: 40%;
+    width: 200px;
     display: flex;
     flex-wrap: wrap;
    
@@ -112,11 +112,11 @@ button{
 }
 
 
-@media screen and (width: 450px){
+@media only screen and (max-width: 600px){
     
     
     .article-image{
-        max-width: 50%;
+        max-width: 200px;
         
     }
     .nav-content .nav-text{
