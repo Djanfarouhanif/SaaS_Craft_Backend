@@ -51,3 +51,13 @@ def articleComment(request, pk):
         return redirect("/article_post/"+ pk)
     else:
         return redirect("article_post")
+
+def signup(request):
+    
+    return render(request, 'signup.html')
+
+def signin(request):
+    return render(request, 'login.html')
+
+def logout(request):
+    pass
