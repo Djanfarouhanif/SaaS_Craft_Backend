@@ -74,7 +74,8 @@ def signup(request):
             new_user.save()
 
             # login directly for user
-            new_user_login = User.objects.get(username=usernamen, password=password)
+            # update login code
+            new_user_login = User.objects.get(username=username)
             user_login = login(request, new_user_login)
 
             new_profile = Profile.objects.create(user=new_user)
@@ -89,20 +90,20 @@ def signup(request):
 
 # Correct this part of code
 def signin(request):
-    if request.method == 'POST':
-        username = request.POST["username"]
-        password = request.POST['password']
-        print(User.objects.get(username="Hanif", password="1234"))
+    # if request.method == 'POST':
+    #     username = request.POST["username"]
+    #     password = request.POST['password']
+    #     print(User.objects.get(username="Hanif", password="1234"))
 
-        if User.objects.filter(username=username, password=password).exists():
-            user = User.objects.get(username=username, password=password)
-            user_login = login(request, user)
-            return redirect('index')
-        else:
-            messages.error(request, "password or username not matching ")
-            return redirect("signin")
+    #     if User.objects.filter(username=username, password=password).exists():
+    #         user = User.objects.get(username=username, password=password)
+    #         user_login = login(request, user)
+    #         return redirect('index')
+    #     else:
+    #         messages.error(request, "password or username not matching ")
+    #         return redirect("signin")
     return render(request, 'login.html')
 
-def logout(request):
-    logout(request)
-    return redirect("signin")
+# def logout(request):
+#     user_log = logout(request)
+#     return redirect("signin")
