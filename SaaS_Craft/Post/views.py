@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Article, Comment
-
+from .models import Article, Comment, Profile
+from django.contrib.auth import login, logout
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 def index(request):
@@ -53,10 +55,52 @@ def articleComment(request, pk):
         return redirect("article_post")
 
 def signup(request):
-    
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        password2 = request.POST["password2"]
+
+        if User.objects.filter(username=username).exists():
+            messages.info(request, "username exists alredy")
+            return redirect("signup")
+        
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Email is alredy use')
+            return redirect("signup")
+        if password == password2:
+            new_user = User.objects.create_user(username=username, email=email, password=password)
+            new_user.save()
+
+            # login directly for user
+            new_user_login = User.objects.get(username=usernamen, password=password)
+            user_login = login(request, new_user_login)
+
+            new_profile = Profile.objects.create(user=new_user)
+            new_profile.save()
+            return redirect("index")
+        else:
+            messages.error(request, "password no matching ")
+            return redirect("signup")
+
+
     return render(request, 'signup.html')
 
+# Correct this part of code
 def signin(request):
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST['password']
+        print(User.objects.get(username="Hanif", password="1234"))
+
+        if User.objects.filter(username=username, password=password).exists():
+            user = User.objects.get(username=username, password=password)
+            user_login = login(request, user)
+            return redirect('index')
+        else:
+            messages.error(request, "password or username not matching ")
+            return redirect("signin")
     return render(request, 'login.html')
 
 def logout(request):
