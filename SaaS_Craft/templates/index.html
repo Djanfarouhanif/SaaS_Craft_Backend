@@ -36,11 +36,10 @@
             </div>
             <!-- all_center  -->
             <div class="article-container">
-                <div class="all_article">
                     {% for article in articles %}
                     <!--Vrai ===========================================Vrai-->
                     <div class="article">
-                        <div>
+                       
                             <div class="article-body">
                             <div class="profile">
                                 <div class="profile-image">
@@ -69,12 +68,12 @@
                                 <a href="{% url 'article_post' pk=article.id %}"><h4>plus....</h4></a>
                             </div>
                         </div>
-                    </div>
+                   
                 </div>
                     <!--===============Fin ==================================-->
                     {% endfor %}
                 <!--===============Fin ==================================-->
-            </div>
+          
             
         </div>
     </div>
