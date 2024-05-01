@@ -3,7 +3,7 @@ from .models import Article, Comment, Profile
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib import messages
-
+from Serializer.Article_serializer import ArticleSerializer
 
 def index(request):
 
