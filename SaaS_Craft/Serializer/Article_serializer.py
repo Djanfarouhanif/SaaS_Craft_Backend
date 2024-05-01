@@ -4,5 +4,5 @@ from Post.models import Article
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
-        models = Article
+        model = Article
         fields = "__all__"
