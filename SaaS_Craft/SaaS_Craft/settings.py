@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Post',
     'rest_framework',
-    'coresheaders',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middlewre.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    
+    
 ]
 
 ROOT_URLCONF = 'SaaS_Craft.urls'
@@ -132,6 +134,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200/',
-    'http://localhost:4200/article-detaile'
+    'http://localhost:4200',
+    
 ]
