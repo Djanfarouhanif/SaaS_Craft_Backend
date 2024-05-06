@@ -17,7 +17,7 @@ def index(request):
     users =  request.user.username
     user_current = bool(users)
 
-    return Response(serializer.data)
+    return Response(serializer.data, status=200)
 
 @api_view(['POST'])
 def settings(request):
@@ -40,9 +40,10 @@ def settings(request):
 
             return Response(serializer.data, status=201)
         else:
-            return Response(serializer.errors, status)
+            return Response(serializer.errors, status=400)
     else:
         return Response({'error': 'Only POST requests are allowed.'}, status=405)
+
 @api_view(['GET'])
 def article_post(request, pk):
     try:
@@ -58,7 +59,7 @@ def article_post(request, pk):
         'article':article_serializer.data,
         'comments':comments_serializer.data
     }
-    return Response(data)
+    return Response(data, status=200)
 
 @api_view(['GET'])
 def articleComment(request, pk):
@@ -79,22 +80,23 @@ def articleComment(request, pk):
             return Resopnse({'error': 'Comment text is required'}, status=400)
     else:
         return Resopnse({'error': 'Only POST requests are allowed.'}, status=405)
+        
 @api_view(['POST'])
 def signup(request):
-
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST["password2"]
-
+        
         if User.objects.filter(username=username).exists():
             return Response({'error': 'Username already exists'}, status=400)
         
         if User.objects.filter(email=email).exists():
-            return Resopnse({'error': 'Email is already in user'}, status=400)
+            return Response({'error': 'Email is already in user'}, status=400)
 
         if password != password2:
+            print(request.user, "*********2")
             return Response({'error': 'Passwords do not match'}, status=400)
 
         new_user = User.objects.create_user(username=username, email=email, password=password)
@@ -104,7 +106,7 @@ def signup(request):
             
         new_user_login = authenticate(username=username, password=password)
         user_login = login(request, new_user_login)
-        if newuser_login is not None:
+        if new_user_login is not None:
             login(request, new_user_login)
 
             new_profile = Profile.objects.create(user=new_user)
