@@ -21,7 +21,7 @@ class SignupTest(TestCase):
 
     def test_signup_duplicate_username(self):
         User.objects.create_user(username='testuser', email='exists@gmail.com', password='exists')
-        print(User.objects.all())
+        
         user_data = {
             'username': 'testuse',
             'email': 'exists@gmail.com',
@@ -34,4 +34,17 @@ class SignupTest(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertFalse(User.objects.filter(email='text@gmail.com').exists())
 
-    
+    def test_is_none(self):
+
+        data = {
+            'username' : 'testuse',
+            'email' : 'test@gmail.com',
+            'password': '1234',
+            
+        }
+        response = self.client.post(reverse('signup'), data)
+
+        self.assertEqual(response.status_code, 400)
+        
+
+

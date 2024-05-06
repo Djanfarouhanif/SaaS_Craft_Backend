@@ -84,11 +84,13 @@ def articleComment(request, pk):
 @api_view(['POST'])
 def signup(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        password2 = request.POST["password2"]
+        username = request.POST.get('username', None)
+        email = request.POST.get('email', None)
+        password = request.POST.get('password', None)
+        password2 = request.POST.get('password2', None)
         
+        if username is None or email is None or password is None or password2 is None:
+            return Response({"error": 'Missing required fields'}, status=400)
         if User.objects.filter(username=username).exists():
             return Response({'error': 'Username already exists'}, status=400)
         
