@@ -48,3 +48,29 @@ class SignupTest(TestCase):
         
 
 
+class LoginTest(TestCase):
+    
+    def test_authenicate(self):
+
+        data = {
+            "username": "test",
+            "email": 'test@gmail.com',
+            "password": '1234',
+            'password2': '1234',
+        }
+
+        response = self.client.post(reverse('signup'), data)
+
+
+        current_user_data = {
+            "username": "test",
+            "password": "1234"
+        }
+
+        respons1 = self.client.post(reverse("signin"), current_user_data)
+
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(User.objects.filter(username='test').exists())
+
+

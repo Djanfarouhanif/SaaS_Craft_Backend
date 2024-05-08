@@ -135,7 +135,7 @@ def signin(request):
         
         if user is not None:
             login(request, user)
-            return Resopnse({'succes': 'User authenticated successfully'}, status=200)
+            return Response({'succes': 'User authenticated successfully'}, status=200)
         else:
             return Respons({'error': 'Username or password not matching'}, status=400)
 
