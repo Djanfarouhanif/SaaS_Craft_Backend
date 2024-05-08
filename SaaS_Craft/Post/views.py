@@ -90,7 +90,7 @@ def signup(request):
         password2 = request.POST.get('password2', None)
         
         if username is None or email is None or password is None or password2 is None:
-            return Response({"error": 'Missing required fields'}, status=400)
+            return Response({"error": f'Missing required fields {username, email, password, password2}' }, status=400)
         if User.objects.filter(username=username).exists():
             return Response({'error': 'Username already exists'}, status=400)
         
