@@ -137,7 +137,7 @@ def signin(request):
             login(request, user)
             return Response({'succes': 'User authenticated successfully'}, status=200)
         else:
-            return Respons({'error': 'Username or password not matching'}, status=400)
+            return Response({'error': 'Username or password not matching'}, status=400)
 
     else:
         return Response({'error': 'Only POST requests are allowed  '}, status=405)

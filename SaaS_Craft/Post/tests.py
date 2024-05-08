@@ -73,4 +73,26 @@ class LoginTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue(User.objects.filter(username='test').exists())
 
+    def test_user_note_authenticate(self):
+
+       
+        
+        data = {
+            "username": "test",
+            "email": 'test@gmail.com',
+            "password": '1234',
+            'password2': '1234',
+        }
+
+        respons = self.client.post(reverse('signin'), data)
+
+        current_user = {
+            "username": 'test',
+            'password': "123"
+        }
+
+        response = self.client.post(reverse('signin'), current_user)
+
+        self.assertEqual(response.status_code, 400)
+
 
